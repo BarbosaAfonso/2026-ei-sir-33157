@@ -1,0 +1,53 @@
+{
+  "cursos": [
+    {
+      "id": "1",
+      "nomeDoCurso": "Engenharia Informática"
+    },
+    {
+      "id": "2",
+      "nomeDoCurso": "Design do Produto"
+    },
+    {
+      "id": "3",
+      "nomeDoCurso": "Engenharia Mecatrónica"
+    }
+  ],
+  "alunos": [
+    {
+      "id": "1",
+      "nome": "Afonso",
+      "apelido": "Barbosa",
+      "idCurso": "1",
+      "anoCurricular": 3
+    },
+    {
+      "id": "2",
+      "nome": "Mariana",
+      "apelido": "Silva",
+      "idCurso": "2",
+      "anoCurricular": 2
+    },
+    {
+      "id": "3",
+      "nome": "João",
+      "apelido": "Pereira",
+      "idCurso": "1",
+      "anoCurricular": 1
+    },
+    {
+      "nome": "Britex",
+      "apelido": "das Babes",
+      "idCurso": "1",
+      "anoCurricular": 3,
+      "id": "4"
+    },
+    {
+      "id": "5",
+      "nome": "Mátio",
+      "apelido": "do Roast",
+      "idCurso": "2",
+      "anoCurricular": 5
+    }
+  ]
+}

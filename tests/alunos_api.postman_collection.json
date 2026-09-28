@@ -1,0 +1,77 @@
+{
+  "info": {
+    "name": "Atividade Prática 1 - Alunos API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Cursos",
+      "item": [
+        {
+          "name": "GET Cursos",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/cursos"
+          }
+        },
+        {
+          "name": "GET Curso por ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/cursos/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Alunos",
+      "item": [
+        {
+          "name": "GET Alunos",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/alunos"
+          }
+        },
+        {
+          "name": "GET Aluno por ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/alunos/1"
+          }
+        },
+        {
+          "name": "POST Criar Aluno",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Carlos\",\n  \"apelido\": \"Ferreira\",\n  \"idCurso\": \"1\",\n  \"anoCurricular\": 1\n}"
+            },
+            "url": "http://localhost:3000/alunos"
+          }
+        },
+        {
+          "name": "PUT Atualizar Aluno",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Carlos\",\n  \"apelido\": \"Santos\",\n  \"idCurso\": \"1\",\n  \"anoCurricular\": 2\n}"
+            },
+            "url": "http://localhost:3000/alunos/1"
+          }
+        },
+        {
+          "name": "DELETE Remover Aluno",
+          "request": {
+            "method": "DELETE",
+            "url": "http://localhost:3000/alunos/1"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão Académica de Alunos</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="app-header">
+      <div>
+        <h1>Portal de Gestão de Alunos</h1>
+        <p class="subtitle">Consumo de API RESTful com Fetch API</p>
+      </div>
+      <button id="btnNovoAluno" class="btn btn-primary">+ Novo Aluno</button>
+    </header>
+
+    <main>
+      <section class="card">
+        <div class="table-header">
+          <h2>Lista de Alunos</h2>
+          <span id="totalBadge" class="badge">0 alunos</span>
+        </div>
+        <div class="table-responsive">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome Completo</th>
+                <th>Curso</th>
+                <th>Ano Curricular</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="alunosTableBody">
+              <tr>
+                <td colspan="5" class="text-center">A carregar dados...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="alunoModal" class="modal-backdrop hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">Adicionar Aluno</h3>
+        <button id="btnFecharModal" class="btn-close">&times;</button>
+      </div>
+      <form id="alunoForm">
+        <input type="hidden" id="alunoId">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Nome *</label>
+            <input type="text" id="nome" required placeholder="Ex: Afonso">
+          </div>
+          <div class="form-group">
+            <label for="apelido">Apelido *</label>
+            <input type="text" id="apelido" required placeholder="Ex: Barbosa">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="idCurso">Curso *</label>
+            <select id="idCurso" required>
+              <option value="">A carregar cursos...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="anoCurricular">Ano Curricular *</label>
+            <select id="anoCurricular" required>
+              <option value="1">1º Ano</option>
+              <option value="2">2º Ano</option>
+              <option value="3">3º Ano</option>
+              <option value="4">4º Ano</option>
+              <option value="5">5º Ano</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="btnCancelar" class="btn btn-secondary">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
