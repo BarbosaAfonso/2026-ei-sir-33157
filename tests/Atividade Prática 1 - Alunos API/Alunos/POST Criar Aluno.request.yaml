@@ -1,0 +1,15 @@
+$kind: http-request
+url: http://localhost:3000/alunos
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "nome": "Carlos",
+      "apelido": "Ferreira",
+      "idCurso": "1",
+      "anoCurricular": 1
+    }
+order: 3000

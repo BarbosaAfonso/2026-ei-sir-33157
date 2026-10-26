@@ -48,6 +48,13 @@
       "apelido": "do Roast",
       "idCurso": "2",
       "anoCurricular": 5
+    },
+    {
+      "nome": "Carlos",
+      "apelido": "Ferreira",
+      "idCurso": "1",
+      "anoCurricular": 1,
+      "id": "xKYK9SI"
     }
   ]
 }

@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: 5a781f71-e43c-4c25-868e-897e5b33ca6b
+
+localResources:
+  collections:
+    - ../tests/Atividade Prática 1 - Alunos API
