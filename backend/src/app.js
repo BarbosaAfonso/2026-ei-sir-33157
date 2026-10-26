@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./docs/swagger');
 
 const cursoRoutes = require('./routes/cursoRoutes');
 const alunoRoutes = require('./routes/alunoRoutes');
@@ -8,6 +10,9 @@ const app = express();
 
 app.use(cors({ origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : '*' }));
 app.use(express.json());
+
+app.get('/api-docs.json', (req, res) => res.json(swaggerSpec));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.get('/', (req, res) => {
   res.json({ mensagem: 'API Escola a funcionar', endpoints: ['/cursos', '/alunos'] });
