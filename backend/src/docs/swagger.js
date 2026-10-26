@@ -1,9 +1,10 @@
+// Especificação OpenAPI 3.0 da API (servida em /api-docs)
 const idParam = (descricao) => ({
   name: 'id',
   in: 'path',
   required: true,
   description: descricao,
-  schema: { type: 'string', example: '6650f1c2a1b2c3d4e5f60718' }
+  schema: { type: 'string', example: '1' }
 });
 
 const erro = (descricao) => ({
@@ -111,7 +112,7 @@ module.exports = {
             name: 'idCurso',
             in: 'query',
             description: 'Filtrar por curso',
-            schema: { type: 'string', example: '6650f1c2a1b2c3d4e5f60718' }
+            schema: { type: 'string', example: '1' }
           },
           {
             name: 'anoCurricular',
@@ -182,7 +183,7 @@ module.exports = {
       Curso: {
         type: 'object',
         properties: {
-          id: { type: 'string', example: '6650f1c2a1b2c3d4e5f60718' },
+          id: { type: 'string', example: '1' },
           nomeDoCurso: { type: 'string', example: 'Engenharia Informática' }
         }
       },
@@ -194,10 +195,10 @@ module.exports = {
       Aluno: {
         type: 'object',
         properties: {
-          id: { type: 'string', example: '6650f1c2a1b2c3d4e5f60999' },
+          id: { type: 'string', example: '1' },
           nome: { type: 'string', example: 'Afonso' },
           apelido: { type: 'string', example: 'Barbosa' },
-          idCurso: { type: 'string', example: '6650f1c2a1b2c3d4e5f60718' },
+          idCurso: { type: 'string', example: '1' },
           anoCurricular: { type: 'integer', example: 3 }
         }
       },
@@ -207,7 +208,7 @@ module.exports = {
         properties: {
           nome: { type: 'string', example: 'Afonso' },
           apelido: { type: 'string', example: 'Barbosa' },
-          idCurso: { type: 'string', example: '6650f1c2a1b2c3d4e5f60718' },
+          idCurso: { type: 'string', example: '1' },
           anoCurricular: { type: 'integer', minimum: 1, example: 3 }
         }
       },
