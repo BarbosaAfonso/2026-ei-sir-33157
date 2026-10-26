@@ -28,10 +28,13 @@
   padding: 0;
 }
 
-/* Barra de deslocação discreta, na cor do tema */
+/* Sem barra de deslocação visível: a página continua a deslocar-se com a roda, o touchpad e o teclado */
 html {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(23, 58, 49, 0.45) var(--papel);
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
