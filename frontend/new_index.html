@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Alunos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=Instrument+Sans:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="new_style.css">
+</head>
+<body>
+  <div class="chao" aria-hidden="true"></div>
+
+  <div class="cena">
+    <div class="maquina" id="maquina">
+      <!-- A lateral e a frente são dois contextos 3D irmãos: a lateral fica sempre por baixo -->
+      <div class="plano plano-lado" aria-hidden="true">
+        <div class="lado"></div>
+        <div class="lado-cunha"></div>
+      </div>
+
+      <div class="plano plano-frente">
+      <div class="frente">
+        <header class="letreiro">
+          <span class="luzes" aria-hidden="true"></span>
+          <div class="letreiro-texto">
+            <p class="marca">
+              <span class="marca-pontos" aria-hidden="true"><i></i><i></i><i></i></span>
+              Portal de gestão
+            </p>
+            <h1 class="hero-titulo">Alunos</h1>
+          </div>
+          <button id="btnNovoAluno" class="btn btn-primary" type="button">+ Novo aluno</button>
+        </header>
+
+        <div class="moldura">
+          <div class="ecra" id="ecra">
+            <div class="ecra-topo">
+              <p id="resumo" class="resumo" aria-live="polite">A carregar alunos…</p>
+              <div id="filtros" class="filtros" role="group" aria-label="Filtrar por curso"></div>
+            </div>
+            <main>
+              <section id="alunosGrid" class="grelha" aria-label="Lista de alunos">
+                <div class="estado"><p>A carregar alunos…</p></div>
+              </section>
+            </main>
+          </div>
+          <div class="vidro" aria-hidden="true"></div>
+        </div>
+
+        <footer class="zona-painel">
+          <div class="painel" aria-hidden="true">
+            <span class="js-base"></span>
+            <span class="js-sombra"></span>
+            <span class="js-stick"></span>
+            <span class="js-bola"></span>
+            <span class="botoes">
+              <span class="botao"><i></i></span>
+              <span class="botao"><i></i></span>
+              <span class="botao"><i></i></span>
+            </span>
+          </div>
+          <div class="base">
+            <div class="moeda" aria-hidden="true">
+              <span class="moeda-texto">Insere moeda</span>
+              <span class="moeda-ranhura"></span>
+            </div>
+            <p class="rodape">Atividade Prática #1: API RESTful com json-server e Fetch API.</p>
+          </div>
+        </footer>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="alunoModal" class="modal-fundo hidden">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-topo">
+        <h3 id="modalTitle">Novo aluno</h3>
+        <button id="btnFecharModal" class="btn-fechar" type="button" aria-label="Fechar">&times;</button>
+      </div>
+      <form id="alunoForm">
+        <input type="hidden" id="alunoId">
+        <div class="form-row">
+          <div class="campo">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" required placeholder="Ex: Afonso">
+          </div>
+          <div class="campo">
+            <label for="apelido">Apelido</label>
+            <input type="text" id="apelido" required placeholder="Ex: Barbosa">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="campo">
+            <label for="idCurso">Curso</label>
+            <select id="idCurso" required>
+              <option value="">A carregar cursos…</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="anoCurricular">Ano curricular</label>
+            <select id="anoCurricular" required>
+              <option value="1">1º ano</option>
+              <option value="2">2º ano</option>
+              <option value="3">3º ano</option>
+              <option value="4">4º ano</option>
+              <option value="5">5º ano</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-acoes">
+          <button type="button" id="btnCancelar" class="btn btn-secundario">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="new_script.js"></script>
+</body>
+</html>
