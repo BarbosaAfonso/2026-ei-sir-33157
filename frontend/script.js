@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://two026-ei-sir-33157.onrender.com';
 let cursosCache = [];
 
 const tableBody = document.getElementById('alunosTableBody');
