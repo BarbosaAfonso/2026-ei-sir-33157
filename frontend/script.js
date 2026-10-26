@@ -267,10 +267,19 @@ async function carregar() {
       el('option', { value: '', text: 'Escolhe um curso' }),
       ...cursos.map((c) => el('option', { value: c.id, text: c.nomeDoCurso })));
     render();
+    abrirNovoPeloEndereco();
   } catch (err) {
     clearTimeout(demora);
     renderErro(err);
   }
+}
+
+// A matriz envia para aqui com ?novo=1&curso=..&ano=.. para adicionar já com os campos preenchidos
+function abrirNovoPeloEndereco() {
+  const params = new URLSearchParams(location.search);
+  if (params.get('novo') !== '1') return;
+  abrirAluno(null, Number(params.get('ano')) || null, params.get('curso'));
+  history.replaceState(null, '', location.pathname);
 }
 
 // ---------- Mudar de ano (arrastar) ----------
@@ -299,7 +308,7 @@ async function mover(id, ano) {
 
 // ---------- Criar e editar ----------
 
-function abrirAluno(aluno, anoPreDefinido) {
+function abrirAluno(aluno, anoPreDefinido, cursoPreDefinido) {
   alunoForm.reset();
   alunoForm.dataset.id = aluno ? aluno.id : '';
   alunoTitulo.textContent = aluno ? `Editar aluno n.º ${aluno.id}` : 'Novo aluno';
@@ -308,8 +317,9 @@ function abrirAluno(aluno, anoPreDefinido) {
     alunoForm.elements.apelido.value = aluno.apelido;
     selectCurso.value = String(aluno.idCurso);
     alunoForm.elements.ano.value = String(aluno.anoCurricular);
-  } else if (anoPreDefinido) {
-    alunoForm.elements.ano.value = String(anoPreDefinido);
+  } else {
+    if (anoPreDefinido) alunoForm.elements.ano.value = String(anoPreDefinido);
+    if (cursoPreDefinido) selectCurso.value = String(cursoPreDefinido);
   }
   alunoDialog.showModal();
 }
