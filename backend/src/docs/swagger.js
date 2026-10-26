@@ -1,4 +1,3 @@
-// Especificação OpenAPI 3.0 da API (servida em /api-docs)
 const idParam = (descricao) => ({
   name: 'id',
   in: 'path',
@@ -123,8 +122,8 @@ module.exports = {
         ],
         responses: {
           200: {
-            description: 'Lista de alunos (com o curso preenchido)',
-            content: json({ type: 'array', items: { $ref: '#/components/schemas/AlunoComCurso' } })
+            description: 'Lista de alunos',
+            content: json({ type: 'array', items: { $ref: '#/components/schemas/Aluno' } })
           }
         }
       },
@@ -147,7 +146,7 @@ module.exports = {
         summary: 'Obtém um aluno',
         parameters: [idParam('ID do aluno')],
         responses: {
-          200: { description: 'Aluno', content: json({ $ref: '#/components/schemas/AlunoComCurso' }) },
+          200: { description: 'Aluno', content: json({ $ref: '#/components/schemas/Aluno' }) },
           400: erro('ID inválido'),
           404: erro('Aluno não encontrado')
         }
@@ -183,7 +182,7 @@ module.exports = {
       Curso: {
         type: 'object',
         properties: {
-          _id: { type: 'string', example: '6650f1c2a1b2c3d4e5f60718' },
+          id: { type: 'string', example: '6650f1c2a1b2c3d4e5f60718' },
           nomeDoCurso: { type: 'string', example: 'Engenharia Informática' }
         }
       },
@@ -195,20 +194,10 @@ module.exports = {
       Aluno: {
         type: 'object',
         properties: {
-          _id: { type: 'string', example: '6650f1c2a1b2c3d4e5f60999' },
+          id: { type: 'string', example: '6650f1c2a1b2c3d4e5f60999' },
           nome: { type: 'string', example: 'Afonso' },
           apelido: { type: 'string', example: 'Barbosa' },
           idCurso: { type: 'string', example: '6650f1c2a1b2c3d4e5f60718' },
-          anoCurricular: { type: 'integer', example: 3 }
-        }
-      },
-      AlunoComCurso: {
-        type: 'object',
-        properties: {
-          _id: { type: 'string', example: '6650f1c2a1b2c3d4e5f60999' },
-          nome: { type: 'string', example: 'Afonso' },
-          apelido: { type: 'string', example: 'Barbosa' },
-          idCurso: { $ref: '#/components/schemas/Curso' },
           anoCurricular: { type: 'integer', example: 3 }
         }
       },

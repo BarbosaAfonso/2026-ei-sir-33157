@@ -15,7 +15,18 @@ const alunoSchema = new mongoose.Schema(
       min: [1, 'anoCurricular mínimo é 1']
     }
   },
-  { versionKey: false }
+  {
+    versionKey: false,
+    // Devolve "id" e "idCurso" como strings, igual ao bd.json
+    toJSON: {
+      transform: (doc, ret) => {
+        ret.id = ret._id.toString();
+        delete ret._id;
+        if (ret.idCurso) ret.idCurso = ret.idCurso.toString();
+        return ret;
+      }
+    }
+  }
 );
 
 module.exports = mongoose.model('Aluno', alunoSchema, 'alunos');

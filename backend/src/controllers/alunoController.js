@@ -7,7 +7,7 @@ exports.listar = async (req, res, next) => {
     const filtro = {};
     if (req.query.idCurso) filtro.idCurso = req.query.idCurso;
     if (req.query.anoCurricular) filtro.anoCurricular = Number(req.query.anoCurricular);
-    res.json(await Aluno.find(filtro).populate('idCurso', 'nomeDoCurso'));
+    res.json(await Aluno.find(filtro));
   } catch (err) {
     next(err);
   }
@@ -16,7 +16,7 @@ exports.listar = async (req, res, next) => {
 // GET /alunos/:id
 exports.obter = async (req, res, next) => {
   try {
-    const aluno = await Aluno.findById(req.params.id).populate('idCurso', 'nomeDoCurso');
+    const aluno = await Aluno.findById(req.params.id);
     if (!aluno) return res.status(404).json({ erro: 'Aluno não encontrado' });
     res.json(aluno);
   } catch (err) {
