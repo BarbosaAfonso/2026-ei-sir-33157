@@ -249,7 +249,7 @@ a.btn {
   display: none;
 }
 
-/* ---------- Ecrãs pequenos: cada curso vira um bloco com 5 anos ---------- */
+/* ---------- Ecrãs pequenos: cada curso vira um bloco com 4 anos ---------- */
 
 @media (max-width: 719px) {
   .matriz thead {
@@ -268,7 +268,7 @@ a.btn {
 
   .matriz tr {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 6px;
     padding: 16px 0;
     border-top: 1px solid var(--linha);

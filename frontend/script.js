@@ -1,5 +1,5 @@
 const API_URL = 'https://two026-ei-sir-33157.onrender.com';
-const ANOS_MINIMOS = 5;   // colunas 1º a 5º ano (cresce se existir um ano maior)
+const ANOS_MINIMOS = 4;   // colunas 1º a 4º ano (cresce se existir um ano maior)
 const NUM_CORES = 5;      // cores e formas distintas para os cursos
 
 let cursos = [];

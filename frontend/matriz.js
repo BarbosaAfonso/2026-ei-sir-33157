@@ -1,5 +1,5 @@
 const API_URL = 'https://two026-ei-sir-33157.onrender.com';
-const ANOS_MINIMOS = 5;
+const ANOS_MINIMOS = 4;
 const NUM_CORES = 5;
 
 let cursos = [];
