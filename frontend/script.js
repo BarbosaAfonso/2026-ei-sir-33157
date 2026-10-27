@@ -263,9 +263,7 @@ async function carregar() {
   try {
     [cursos, alunos] = await Promise.all([api('/cursos'), api('/alunos')]);
     clearTimeout(demora);
-    selectCurso.replaceChildren(
-      el('option', { value: '', text: 'Escolhe um curso' }),
-      ...cursos.map((c) => el('option', { value: c.id, text: c.nomeDoCurso })));
+    preencherSelectCursos();
     render();
     abrirNovoPeloEndereco();
   } catch (err) {
@@ -357,6 +355,39 @@ alunoForm.addEventListener('submit', async (e) => {
   }
 });
 
+// ---------- Criar curso ----------
+
+const cursoDialog = $('cursoDialog');
+const cursoForm = $('cursoForm');
+const btnGuardarCurso = $('btnGuardarCurso');
+
+function preencherSelectCursos() {
+  selectCurso.replaceChildren(
+    el('option', { value: '', text: 'Escolhe um curso' }),
+    ...cursos.map((c) => el('option', { value: c.id, text: c.nomeDoCurso })));
+}
+
+cursoForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const nome = cursoForm.elements.nomeDoCurso.value.trim();
+  if (!nome) return;
+  btnGuardarCurso.disabled = true;
+  btnGuardarCurso.textContent = 'A criar…';
+  try {
+    const criado = await api('/cursos', { method: 'POST', body: { nomeDoCurso: nome } });
+    cursos.push(criado);
+    preencherSelectCursos();
+    cursoDialog.close();
+    render();
+    mostrarAviso(`Curso "${criado.nomeDoCurso}" criado.`);
+  } catch (err) {
+    mostrarAviso(`Não foi possível criar o curso: ${err.message}`, true);
+  } finally {
+    btnGuardarCurso.disabled = false;
+    btnGuardarCurso.textContent = 'Criar curso';
+  }
+});
+
 // ---------- Apagar ----------
 
 function pedirApagar(aluno) {
@@ -385,11 +416,13 @@ btnApagarSim.addEventListener('click', async () => {
 // ---------- Eventos gerais ----------
 
 $('btnNovoAluno').addEventListener('click', () => abrirAluno(null));
+$('btnNovoCurso').addEventListener('click', () => { cursoForm.reset(); cursoDialog.showModal(); });
+$('btnCancelarCurso').addEventListener('click', () => cursoDialog.close());
 $('btnCancelar').addEventListener('click', () => alunoDialog.close());
 $('btnApagarNao').addEventListener('click', () => apagarDialog.close());
 
 // Clicar fora da caixa (no fundo escurecido) fecha o diálogo
-[alunoDialog, apagarDialog].forEach((d) =>
+[alunoDialog, cursoDialog, apagarDialog].forEach((d) =>
   d.addEventListener('click', (e) => { if (e.target === d) d.close(); }));
 
 carregar();
