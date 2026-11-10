@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+/* Variantes próprias, com os mesmos pontos de quebra do desenho original */
+@custom-variant medio (@media (max-width: 1199px));
+@custom-variant pequeno (@media (max-width: 719px));
+@custom-variant toque (@media (hover: none) and (pointer: coarse));
+@custom-variant sem-hover (@media (hover: none));
+
+/* "static" garante que as variáveis existem mesmo quando só são usadas via var(--color-curso-N) */
+@theme static {
+  --color-papel: #E7ECE4;
+  --color-folha: #F6F8F3;
+  --color-tinta: #173A31;
+  --color-tinta-2: #4F665D;
+  --color-linha: #C2CDC1;
+  --color-perigo: #B3261E;
+  --color-foco: #2457D6;
+  --color-ambar: #E9A100;
+
+  /* Cada curso ganha uma cor e uma forma, pela ordem em que vem da API */
+  --color-curso-0: #E9A100;
+  --color-curso-1: #14808F;
+  --color-curso-2: #9B3A76;
+  --color-curso-3: #4B5BD6;
+  --color-curso-4: #5E9B3A;
+  --color-curso-nd: #8A9A92;
+
+  --font-display: 'Big Shoulders Display', 'Arial Narrow', 'Roboto Condensed', sans-serif;
+  --font-texto: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --animate-pouso: pouso 0.9s ease-out;
+  --animate-respira: respira 1.4s ease-in-out infinite;
+
+  @keyframes pouso {
+    0% { box-shadow: 0 0 0 5px var(--color-ambar); }
+    100% { box-shadow: 0 0 0 0 rgb(233 161 0 / 0); }
+  }
+  @keyframes respira {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+  }
+}
+
+@layer base {
+  /* Sem barra de deslocação visível: a página continua a deslocar-se com a roda, o touchpad e o teclado */
+  html {
+    scrollbar-width: none;
+  }
+  html::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: var(--font-texto);
+    color: var(--color-tinta);
+    background-color: var(--color-papel);
+    /* papel milimétrico: quadrícula fina de 24px e uma linha mais forte a cada 120px */
+    background-image:
+      linear-gradient(rgb(23 58 49 / 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(23 58 49 / 0.1) 1px, transparent 1px),
+      linear-gradient(rgb(23 58 49 / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(23 58 49 / 0.06) 1px, transparent 1px);
+    background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-foco);
+    outline-offset: 2px;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+/* Régua: marca os anos como uma escala */
+@utility regua {
+  height: 12px;
+  border-bottom: 1px solid var(--color-tinta);
+  background-image:
+    linear-gradient(90deg, var(--color-tinta) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-tinta) 1px, transparent 1px);
+  background-size: 8px 6px, 40px 12px;
+  background-position: left bottom, left bottom;
+  background-repeat: repeat-x;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media print {
+  @page {
+    margin: 14mm;
+  }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body {
+    background: #fff;
+  }
+}

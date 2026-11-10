@@ -7,97 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="pagina">
-    <header class="topo">
-      <div class="titulo">
-        <h1>Alunos</h1>
-        <p id="resumo" class="resumo" aria-live="polite">A carregar…</p>
-        <p class="dica">
-          <span class="so-rato">Arrasta um aluno para outra coluna para mudar o ano curricular.</span>
-          <span class="so-toque">Toca em Editar para mudar o ano curricular.</span>
-        </p>
-      </div>
-      <div class="acoes-topo">
-        <a href="matriz.html" class="btn-versao" title="Ver a matriz por curso e ano" aria-label="Ver a matriz por curso e ano">#</a>
-        <button id="btnNovoCurso" class="btn btn-secundario" type="button">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 2v12M2 8h12"/></svg>
-          Novo curso
-        </button>
-        <button id="btnNovoAluno" class="btn btn-primario" type="button">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 2v12M2 8h12"/></svg>
-          Novo aluno
-        </button>
-      </div>
-    </header>
-
-    <div id="filtros" class="filtros" role="group" aria-label="Filtrar por curso"></div>
-
-    <main>
-      <div id="quadro" class="quadro" aria-busy="true"></div>
-    </main>
-  </div>
-
-  <div id="aviso" class="aviso" role="status" aria-live="polite"></div>
-
-  <dialog id="alunoDialog" aria-labelledby="alunoTitulo">
-    <form id="alunoForm" class="dialogo-corpo">
-      <h2 id="alunoTitulo" class="dialogo-titulo">Novo aluno</h2>
-      <div class="linha-2">
-        <div class="campo">
-          <label for="nome">Nome</label>
-          <input type="text" id="nome" name="nome" required autocomplete="off" placeholder="Afonso">
-        </div>
-        <div class="campo">
-          <label for="apelido">Apelido</label>
-          <input type="text" id="apelido" name="apelido" required autocomplete="off" placeholder="Barbosa">
-        </div>
-      </div>
-      <div class="campo">
-        <label for="idCurso">Curso</label>
-        <select id="idCurso" name="idCurso" required></select>
-      </div>
-      <fieldset class="anos">
-        <legend>Ano curricular</legend>
-        <label><input type="radio" name="ano" value="1" required><span>1º</span></label>
-        <label><input type="radio" name="ano" value="2"><span>2º</span></label>
-        <label><input type="radio" name="ano" value="3"><span>3º</span></label>
-        <label><input type="radio" name="ano" value="4"><span>4º</span></label>
-      </fieldset>
-      <div class="dialogo-acoes">
-        <button type="button" id="btnCancelar" class="btn btn-secundario">Cancelar</button>
-        <button type="submit" id="btnGuardar" class="btn btn-primario">Guardar</button>
-      </div>
-    </form>
-  </dialog>
-
-  <dialog id="cursoDialog" aria-labelledby="cursoTitulo">
-    <form id="cursoForm" class="dialogo-corpo">
-      <h2 id="cursoTitulo" class="dialogo-titulo">Novo curso</h2>
-      <div class="campo">
-        <label for="nomeDoCurso">Nome do curso</label>
-        <input type="text" id="nomeDoCurso" name="nomeDoCurso" required autocomplete="off" placeholder="Engenharia Informática">
-      </div>
-      <div class="dialogo-acoes">
-        <button type="button" id="btnCancelarCurso" class="btn btn-secundario">Cancelar</button>
-        <button type="submit" id="btnGuardarCurso" class="btn btn-primario">Criar curso</button>
-      </div>
-    </form>
-  </dialog>
-
-  <dialog id="apagarDialog" aria-labelledby="apagarTitulo">
-    <div class="dialogo-corpo">
-      <h2 id="apagarTitulo" class="dialogo-titulo">Apagar aluno?</h2>
-      <p id="apagarTexto" class="dialogo-texto"></p>
-      <div class="dialogo-acoes">
-        <button type="button" id="btnApagarNao" class="btn btn-secundario">Cancelar</button>
-        <button type="button" id="btnApagarSim" class="btn btn-perigo">Apagar aluno</button>
-      </div>
-    </div>
-  </dialog>
-
-  <script src="script.js"></script>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>
